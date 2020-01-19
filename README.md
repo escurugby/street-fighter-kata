@@ -2,7 +2,7 @@
 
 Source code shows REST API creation with Springboot and Java.
 
-Full Kotlin Source of [Medium Article](https://medium.com/@sreeharikv112/rest-api-with-springboot-kotlin-java-f01216fd25a1)
+Full Java Source of [Medium Article](https://medium.com/@sreeharikv112/rest-api-with-springboot-kotlin-java-f01216fd25a1)
 
 Majorly used request mappings are @GetMapping, @PostMapping, @DeleteMapping, @PutMapping.
 
