@@ -1,5 +1,6 @@
 package com.restapisample;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
@@ -15,7 +16,8 @@ public class SolutionTest {
 	@Test
 	public void shouldWorkWithNoMoves() {
 		String[] solution = new String[]{};
-		assertEquals(solution, Solution.superStreetFighterize(fighters, new int[]{0,1}, new String[]{}));
+		assertArrayEquals(solution, Solution.superStreetFighterize(fighters, new int[]{0,1},
+				new String[]{}));
 	}
 
 	@Test
@@ -23,7 +25,7 @@ public class SolutionTest {
 		String[] moves = new String[] { "up", "left", "right", "left", "left" };
 		int[] position = new int[] {1,1};
 		String[] solution = new String[] { "Ryu", "Guile", "Ryu", "Guile", "Blanka" };
-		assertEquals(solution, Solution.superStreetFighterize(fighters, position, moves));
+		assertArrayEquals(solution, Solution.superStreetFighterize(fighters, position, moves));
 	}
 
 	@Test
@@ -31,7 +33,7 @@ public class SolutionTest {
 		String[] moves = new String[] { "up" };
 		int[] position = new int[] {1,0};
 		String[] solution = new String[] { "Balrog" };
-		assertEquals(solution, Solution.superStreetFighterize(fighters, position, moves));
+		assertArrayEquals(solution, Solution.superStreetFighterize(fighters, position, moves));
 	}
 
 	@Test
@@ -39,7 +41,7 @@ public class SolutionTest {
 		String[] moves = new String[] { "up", "up", "up", "up" };
 		int[] position = new int[] {1,0};
 		String[] solution = new String[] { "Balrog", "Balrog", "Balrog", "Balrog" };
-		assertEquals(solution, Solution.superStreetFighterize(fighters, position, moves));
+		assertArrayEquals(solution, Solution.superStreetFighterize(fighters, position, moves));
 	}
 
 	@Test
@@ -47,7 +49,7 @@ public class SolutionTest {
 		String[] moves = new String[] { "down", "down", "down", "down" };
 		int[] position = new int[] {1,0};
 		String[] solution = new String[] { "Vega", "Vega", "Vega", "Vega" };
-		assertEquals(solution, Solution.superStreetFighterize(fighters, position, moves));
+		assertArrayEquals(solution, Solution.superStreetFighterize(fighters, position, moves));
 	}
 
 	@Test
@@ -55,7 +57,7 @@ public class SolutionTest {
 		String[] moves = new String[] { "up", "up", "up", "up" };
 		int[] position = new int[] {1,5};
 		String[] solution = new String[] { "Sagat", "Sagat", "Sagat", "Sagat" };
-		assertEquals(solution, Solution.superStreetFighterize(fighters, position, moves));
+		assertArrayEquals(solution, Solution.superStreetFighterize(fighters, position, moves));
 	}
 
 	@Test
@@ -63,7 +65,7 @@ public class SolutionTest {
 		String[] moves = new String[] { "down", "down", "down", "down" };
 		int[] position = new int[] {1,5};
 		String[] solution = new String[] { "M.Bison", "M.Bison", "M.Bison", "M.Bison" };
-		assertEquals(solution, Solution.superStreetFighterize(fighters, position, moves));
+		assertArrayEquals(solution, Solution.superStreetFighterize(fighters, position, moves));
 	}
 
 	@Test
@@ -71,7 +73,7 @@ public class SolutionTest {
 		String[] moves = new String[] { "right", "right", "right", "right", "right", "right", "right", "right" };
 		int[] position = new int[] {0,2};
 		String[] solution = new String[] { "Blanka", "Guile", "Ryu", "E.Honda", "Blanka", "Guile", "Ryu", "E.Honda" };
-		assertEquals(solution, Solution.superStreetFighterize(fighters, position, moves));
+		assertArrayEquals(solution, Solution.superStreetFighterize(fighters, position, moves));
 	}
 
 	@Test
@@ -79,7 +81,7 @@ public class SolutionTest {
 		String[] moves = new String[] { "left", "left", "left", "left", "left", "left", "left", "left" };
 		int[] position = new int[] {1,3};
 		String[] solution = new String[] { "Chun Li", "Ken", "Balrog", "Sagat", "Dhalsim", "Zangief", "Chun Li", "Ken" };
-		assertEquals(solution, Solution.superStreetFighterize(fighters, position, moves));
+		assertArrayEquals(solution, Solution.superStreetFighterize(fighters, position, moves));
 	}
 
 	@Test
@@ -87,7 +89,7 @@ public class SolutionTest {
 		String[] moves = new String[] { "right", "right", "right", "right", "right", "right", "down", "left", "left", "left", "left", "left", "left", "left", "left", "left", "left", "left", "left", "down", "right", "right", "right", "right", "right", "right", "right", "right", "right", "right", "right", "right" };
 		int[] position = new int[] {0,2};
 		String[] solution = new String[] {"Blanka", "Guile", "Ryu", "E.Honda", "Blanka", "Guile", "Dhalsim", "Zangief", "Chun Li", "Ken", "Balrog", "Sagat", "Dhalsim", "Zangief", "Chun Li", "Ken", "Balrog", "Sagat", "Dhalsim", "Cammy", "M.Bison", "Vega", "T.Hawk", "Fei Long", "Deejay", "Cammy", "M.Bison", "Vega", "T.Hawk", "Fei Long", "Deejay", "Cammy"};
-		assertEquals(solution, Solution.superStreetFighterize(fighters, position, moves));
+		assertArrayEquals(solution, Solution.superStreetFighterize(fighters, position, moves));
 	}
 
 	// DO NOT CHANGE THIS VARIABLE!
@@ -103,7 +105,7 @@ public class SolutionTest {
 		String[] moves = new String[] { "right", "right", "right", "right", "right", "right", "down", "left", "left", "left", "left", "left", "left", "left", "left", "left", "left", "left", "left", "down", "right", "right", "right", "right", "right", "right", "right", "right", "right", "right", "right", "right" };
 		int[] position = new int[] {0,2};
 		String[] solution = new String[] {"Cammy", "Blanka", "Guile", "Chun Li", "Ryu", "E.Honda", "Chun Li", "Ken", "Balrog", "Sagat", "Dhalsim", "Zangief", "M.Bison", "Chun Li", "Ken", "Balrog", "Sagat", "Dhalsim", "Zangief", "Cammy", "T.Hawk", "Vega", "Fei Long", "Balrog", "Deejay", "Cammy", "T.Hawk", "Vega", "Fei Long", "Balrog", "Deejay", "Cammy"};
-		assertEquals(solution, Solution.superStreetFighterize(fighters3, position, moves));
+		assertArrayEquals(solution, Solution.superStreetFighterize(fighters3, position, moves));
 	}
 
 	@Test
@@ -111,7 +113,7 @@ public class SolutionTest {
 		String[] moves = new String[] {"down", "right", "right", "right", "down", "left", "left", "down", "right", "right", "right", "up" };
 		int[] position = new int[] {0,3};
 		String[] solution = new String[] {"Cammy", "Blanka", "Guile", "Chun Li", "Sagat", "Dhalsim", "Zangief", "Cammy", "T.Hawk", "Vega", "Fei Long", "Chun Li"};
-		assertEquals(solution, Solution.superStreetFighterize(fighters3, position, moves));
+		assertArrayEquals(solution, Solution.superStreetFighterize(fighters3, position, moves));
 	}
 
 	String[][] fighters4 = new String[][]{
@@ -128,7 +130,7 @@ public class SolutionTest {
 		String[] moves = new String[] {"left", "left", "down", "right", "right", "right", "right", "down", "left", "left", "left", "left", "down", "right", "right", "down", "right", "right", "right", "down", "left", "left", "left", "down", "left", "left", "left"};
 		int[] position = new int[] {0,3};
 		String[] solution = new String[] {"E.Honda", "Ryu", "Ken", "Chun Li", "Balrog", "Ken", "Chun Li", "Fei Long", "Vega", "Balrog", "Fei Long", "Vega", "Blanka", "Guile", "Chun Li", "Sagat", "M.Bison", "Zangief", "Dhalsim", "Dhalsim", "Zangief", "M.Bison", "Sagat", "T.Hawk", "Cammy", "Deejay", "T.Hawk"};
-		assertEquals(solution, Solution.superStreetFighterize(fighters4, position, moves));
+		assertArrayEquals(solution, Solution.superStreetFighterize(fighters4, position, moves));
 	}
 
 	@Test
@@ -136,7 +138,7 @@ public class SolutionTest {
 		String[] moves = new String[] {"left", "left", "down", "right", "right", "right", "right", "down", "left", "left", "left", "left", "up", "right", "right", "up", "right", "right", "right"};
 		int[] position = new int[] {3,3};
 		String[] solution = new String[] {"Guile", "Blanka", "M.Bison", "Zangief", "Dhalsim", "Sagat", "M.Bison", "Deejay", "T.Hawk", "Cammy", "Deejay", "T.Hawk", "Sagat", "M.Bison", "Zangief", "Guile", "Chun Li", "Blanka", "Guile"};
-		assertEquals(solution, Solution.superStreetFighterize(fighters4, position, moves));
+		assertArrayEquals(solution, Solution.superStreetFighterize(fighters4, position, moves));
 	}
 
 }
