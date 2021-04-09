@@ -8,6 +8,12 @@ import org.junit.jupiter.api.Test;
 public class SolutionTest {
 
 	String[][] fighters = new String[][]{
+			new String[] {       "",    "Ryu",  "E.Honda",  "Blanka",   "Guile", ""      },
+			new String[] { "Balrog",    "Ken",  "Chun Li", "Zangief", "Dhalsim", "Sagat" },
+			new String[] {   "Vega", "T.Hawk", "Fei Long",  "Deejay",   "Cammy", "M.Bison"      },
+	};
+
+	String[][] fightersWithoutSpaces = new String[][]{
 			new String[] {       "prueba1",    "Ryu",  "E.Honda",  "Blanka",   "Guile", "prueba2"      },
 			new String[] { "Balrog",    "Ken",  "Chun Li", "Zangief", "Dhalsim", "Sagat" },
 			new String[] {   "Vega", "T.Hawk", "Fei Long",  "Deejay",   "Cammy", "M.Bison"      },
@@ -25,7 +31,7 @@ public class SolutionTest {
 		String[] moves = new String[] { "up", "left", "right", "left", "left" };
 		int[] position = new int[] {1,1};
 		String[] solution = new String[] { "Ryu", "prueba1", "Ryu", "prueba1", "prueba2" };
-		assertArrayEquals(solution, Solution.superStreetFighterize(fighters, position, moves));
+		assertArrayEquals(solution, Solution.superStreetFighterize(fightersWithoutSpaces, position, moves));
 	}
 
 	@Test
