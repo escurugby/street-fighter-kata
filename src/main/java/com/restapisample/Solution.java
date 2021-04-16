@@ -33,7 +33,7 @@ public class Solution {
 	}
 
 	private static String moveLeft(CursorPosition cursorPosition, Board board) {
-		cursorPosition.setPositionX(cursorPosition.getPositionX()-1);
+		cursorPosition.left();
 		if (cursorPosition.getPositionX() < board.getLeftLimit()){
 			cursorPosition.setPositionX(board.getRightLimit());
 		}
@@ -45,7 +45,7 @@ public class Solution {
 	}
 
 	private static String moveRight(CursorPosition cursorPosition, Board board) {
-		cursorPosition.setPositionX(cursorPosition.getPositionX()+1);
+		cursorPosition.right();
 		if (cursorPosition.getPositionX() > board.getRightLimit()){
 			cursorPosition.setPositionX(board.getLeftLimit());
 		}
@@ -57,12 +57,12 @@ public class Solution {
 	}
 
 	private static String moveUp(CursorPosition cursorPosition, Board board) {
-		cursorPosition.setPositionY(cursorPosition.getPositionY()-1);
+		cursorPosition.up();
 		if (cursorPosition.getPositionY() < board.getTopLimit()){
 			cursorPosition.setPositionY(board.getTopLimit());
 		}
 		if (StringUtils.isEmpty(board.getFighter(cursorPosition))) {
-			cursorPosition.setPositionY(cursorPosition.getPositionY()+1);
+			cursorPosition.down();
 			return board.getFighter(cursorPosition);
 		}
 
@@ -70,12 +70,12 @@ public class Solution {
 	}
 
 	private static String moveDown(CursorPosition cursorPosition, Board board) {
-		cursorPosition.setPositionY(cursorPosition.getPositionY()+1);
+		cursorPosition.down();
 		if (cursorPosition.getPositionY() > board.getBottomLimit()){
 			cursorPosition.setPositionY(board.getBottomLimit());
 		}
 		if (StringUtils.isEmpty(board.getFighter(cursorPosition))) {
-			cursorPosition.setPositionY(cursorPosition.getPositionY()-1);
+			cursorPosition.up();
 			return board.getFighter(cursorPosition);
 		}
 

@@ -42,4 +42,20 @@ public class CursorPosition {
         return new CursorPosition(this.positionX, this.positionY);
     }
 
+    public void up() {
+        this.positionY--;
+    }
+
+    public void down() {
+        this.positionY++;
+    }
+
+    public void left() {
+        this.positionX--;
+    }
+
+    public void right() {
+        this.positionX++;
+    }
+
 }
