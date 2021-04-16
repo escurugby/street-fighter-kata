@@ -8,21 +8,22 @@ import org.springframework.util.StringUtils;
 public class Solution {
 	public static String[] superStreetFighterize(String[][] fighters, int[] position, String[] moves) {
 		CursorPosition cursorPosition = CursorPosition.from(position);
+		Board board = Board.from(fighters);
 		LinkedList<String> result = new LinkedList<>();
 		for(String move : moves){
 			String currentFighter = "";
 			switch (move){
 				case "up":
-					currentFighter = moveUp(cursorPosition,fighters);
+					currentFighter = moveUp(cursorPosition,board);
 					break;
 				case "down":
-					currentFighter = moveDown(cursorPosition,fighters);
+					currentFighter = moveDown(cursorPosition,board);
 					break;
 				case "right":
-					currentFighter = moveRight(cursorPosition,fighters);
+					currentFighter = moveRight(cursorPosition,board);
 					break;
 				case "left":
-					currentFighter = moveLeft(cursorPosition,fighters);
+					currentFighter = moveLeft(cursorPosition,board);
 					break;
 			}
 			result.add(currentFighter);
@@ -31,58 +32,54 @@ public class Solution {
 		return result.toArray(String[]::new);
 	}
 
-	private static String getFighter(String[][]fighters, CursorPosition cursorPosition) {
-		return fighters[cursorPosition.getPositionY()][cursorPosition.getPositionX()];
-	}
-
-	private static String moveLeft(CursorPosition cursorPosition, String[][]fighters) {
+	private static String moveLeft(CursorPosition cursorPosition, Board board) {
 		cursorPosition.setPositionX(cursorPosition.getPositionX()-1);
-		if (cursorPosition.getPositionX() < 0){
-			cursorPosition.setPositionX(fighters[0].length -1);
+		if (cursorPosition.getPositionX() < board.getLeftLimit()){
+			cursorPosition.setPositionX(board.getRightLimit());
 		}
-		if (StringUtils.isEmpty(getFighter(fighters, cursorPosition))) {
-			return moveLeft(cursorPosition, fighters);
+		if (StringUtils.isEmpty(board.getFighter(cursorPosition))) {
+			return moveLeft(cursorPosition, board);
 		}
 
-		return getFighter(fighters, cursorPosition);
+		return board.getFighter(cursorPosition);
 	}
 
-	private static String moveRight(CursorPosition cursorPosition, String[][]fighters) {
+	private static String moveRight(CursorPosition cursorPosition, Board board) {
 		cursorPosition.setPositionX(cursorPosition.getPositionX()+1);
-		if (cursorPosition.getPositionX() > fighters[0].length-1){
-			cursorPosition.setPositionX(0);
+		if (cursorPosition.getPositionX() > board.getRightLimit()){
+			cursorPosition.setPositionX(board.getLeftLimit());
 		}
-		if (StringUtils.isEmpty(getFighter(fighters, cursorPosition))) {
-			return moveRight(cursorPosition, fighters);
+		if (StringUtils.isEmpty(board.getFighter(cursorPosition))) {
+			return moveRight(cursorPosition, board);
 		}
 
-		return getFighter(fighters, cursorPosition);
+		return board.getFighter(cursorPosition);
 	}
 
-	private static String moveUp(CursorPosition cursorPosition, String[][]fighters) {
+	private static String moveUp(CursorPosition cursorPosition, Board board) {
 		cursorPosition.setPositionY(cursorPosition.getPositionY()-1);
-		if (cursorPosition.getPositionY() < 0){
-			cursorPosition.setPositionY(0);
+		if (cursorPosition.getPositionY() < board.getTopLimit()){
+			cursorPosition.setPositionY(board.getTopLimit());
 		}
-		if (StringUtils.isEmpty(getFighter(fighters, cursorPosition))) {
+		if (StringUtils.isEmpty(board.getFighter(cursorPosition))) {
 			cursorPosition.setPositionY(cursorPosition.getPositionY()+1);
-			return getFighter(fighters, cursorPosition);
+			return board.getFighter(cursorPosition);
 		}
 
-		return getFighter(fighters, cursorPosition);
+		return board.getFighter(cursorPosition);
 	}
 
-	private static String moveDown(CursorPosition cursorPosition, String[][]fighters) {
+	private static String moveDown(CursorPosition cursorPosition, Board board) {
 		cursorPosition.setPositionY(cursorPosition.getPositionY()+1);
-		if (cursorPosition.getPositionY() > fighters.length -1){
-			cursorPosition.setPositionY(fighters.length -1);
+		if (cursorPosition.getPositionY() > board.getBottomLimit()){
+			cursorPosition.setPositionY(board.getBottomLimit());
 		}
-		if (StringUtils.isEmpty(getFighter(fighters, cursorPosition))) {
+		if (StringUtils.isEmpty(board.getFighter(cursorPosition))) {
 			cursorPosition.setPositionY(cursorPosition.getPositionY()-1);
-			return getFighter(fighters, cursorPosition);
+			return board.getFighter(cursorPosition);
 		}
 
-		return getFighter(fighters, cursorPosition);
+		return board.getFighter(cursorPosition);
 	}
 
 
