@@ -1,15 +1,36 @@
 package com.restapisample;
 
+import org.springframework.util.StringUtils;
+
 public class Board {
 
     private String[][] fighters;
 
-    public Board(String[][] fighters) {
+    private CursorPosition cursorPosition;
+
+    public Board(String[][] fighters, CursorPosition cursorPosition) {
+        this.fighters = fighters;
+        this.cursorPosition = cursorPosition;
+    }
+
+    public String[][] getFighters() {
+        return fighters;
+    }
+
+    public void setFighters(String[][] fighters) {
         this.fighters = fighters;
     }
 
-    public static Board from(String[][] fighters) {
-        return new Board(fighters);
+    public CursorPosition getCursorPosition() {
+        return cursorPosition;
+    }
+
+    public void setCursorPosition(CursorPosition cursorPosition) {
+        this.cursorPosition = cursorPosition;
+    }
+
+    public static Board from(String[][] fighters, CursorPosition cursorPosition) {
+        return new Board(fighters, cursorPosition);
     }
 
     public int getWidth() {
@@ -38,5 +59,55 @@ public class Board {
 
     public String getFighter(CursorPosition cursorPosition) {
         return fighters[cursorPosition.getPositionY()][cursorPosition.getPositionX()];
+    }
+
+    public String moveLeft(CursorPosition cursorPosition) {
+        cursorPosition.left();
+        if (cursorPosition.getPositionX() < getLeftLimit()){
+            cursorPosition.setPositionX(getRightLimit());
+        }
+        if (StringUtils.isEmpty(getFighter(cursorPosition))) {
+            return moveLeft(cursorPosition);
+        }
+
+        return getFighter(cursorPosition);
+    }
+
+    public String moveRight(CursorPosition cursorPosition) {
+        cursorPosition.right();
+        if (cursorPosition.getPositionX() > getRightLimit()){
+            cursorPosition.setPositionX(getLeftLimit());
+        }
+        if (StringUtils.isEmpty(getFighter(cursorPosition))) {
+            return moveRight(cursorPosition);
+        }
+
+        return getFighter(cursorPosition);
+    }
+
+    public String moveUp(CursorPosition cursorPosition) {
+        cursorPosition.up();
+        if (cursorPosition.getPositionY() < getTopLimit()){
+            cursorPosition.setPositionY(getTopLimit());
+        }
+        if (StringUtils.isEmpty(getFighter(cursorPosition))) {
+            cursorPosition.down();
+            return getFighter(cursorPosition);
+        }
+
+        return getFighter(cursorPosition);
+    }
+
+    public String moveDown(CursorPosition cursorPosition) {
+        cursorPosition.down();
+        if (cursorPosition.getPositionY() > getBottomLimit()){
+            cursorPosition.setPositionY(getBottomLimit());
+        }
+        if (StringUtils.isEmpty(getFighter(cursorPosition))) {
+            cursorPosition.up();
+            return getFighter(cursorPosition);
+        }
+
+        return getFighter(cursorPosition);
     }
 }
