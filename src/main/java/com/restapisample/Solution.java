@@ -1,9 +1,6 @@
 package com.restapisample;
 
 import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
-
-import org.springframework.util.StringUtils;
 
 public class Solution {
 	public static String[] superStreetFighterize(String[][] fighters, int[] position, String[] moves) {
